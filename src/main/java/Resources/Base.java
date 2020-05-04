@@ -16,8 +16,6 @@ public class Base {
 
 	// Object Creation for POM Pages
 
-	public MatualFund_HomePage M = new MatualFund_HomePage(driver);
-
 	public WebDriver intializeDriver() throws IOException {
 
 		Properties prop = new Properties();

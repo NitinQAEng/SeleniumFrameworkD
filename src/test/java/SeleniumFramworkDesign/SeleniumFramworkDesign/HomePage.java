@@ -2,11 +2,12 @@ package SeleniumFramworkDesign.SeleniumFramworkDesign;
 
 import java.io.IOException;
 
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
-
-import com.Utils.SeleniumUtil;
-
 import Resources.Base;
 import pageObjects.MatualFund_HomePage;
 
@@ -15,22 +16,38 @@ public class HomePage extends Base {
 	public String url;
 
 	@Test
-	public void basepageNavigation() throws IOException {
+	public void basepageNavigation() throws IOException, InterruptedException {
 
 		driver = intializeDriver();
 
-	//	String URL = SeleniumUtil.GetpropertyData(url);
+		MatualFund_HomePage M = new MatualFund_HomePage(driver);
+
+		// String URL = SeleniumUtil.GetpropertyData(url);
 
 		driver.get("https://money.rediff.com/index.html");
 
-		M.MutualFunds_Menu_MutualFunds_Lnk.isDisplayed();
+		Thread.sleep(10000);
+
+		M.MutualFunds_Menu_Forex_Lnk.click();
+
+		List<WebElement> WL = driver.findElements(By.xpath("//table[@class='dataTable']/tbody/tr"));
+//
+//		Iterator<WebElement> it = WL.iterator();
+//
+//		while (it.hasNext()) {
+//
+//			System.out.println(it.next().getText());
+//
+//		}
+		
+		
 
 	}
 
 	@AfterMethod
 	public void closeBrowser() {
 
-		driver.close();
+		// driver.close();
 	}
 
 }
